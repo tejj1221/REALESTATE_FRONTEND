@@ -3,23 +3,12 @@ import React, { useState } from "react"
 // import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 // import {eye} from 'react-icons-kit/feather/eye';
  import { Link, useNavigate } from "react-router-dom";
-import "./login.css"
+import "./Login.css"
 const Login=(props)=>{
     const {token,settoken,id,setid,name,setname}=props;
 
     const [input,setInput]=useState("")
-    // const [type,settype]=useState("password")
-    // const [icon,setIcon]=useState(eyeOff)
-    // const Toggle=()=>{
-    //     if(type==="password"){
-    //         setIcon(eye);
-    //         settype("text")
-    //     }
-    //     else{
-    //         setIcon(eyeOff);
-    //         settype("password")
-    //     }
-    // }
+ 
 
     let nav=useNavigate()
     const handleSubmit=(e)=>{

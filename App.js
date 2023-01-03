@@ -1,7 +1,7 @@
 import Addproperty from './components/addproperty/Addproperty';
 import './App.css';
 
-import Login from './components/Authenticate/login';
+import Login from './components/Authenticate/Login';
 import Register from './components/Authenticate/register';
 import Home from './components/home/home';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
