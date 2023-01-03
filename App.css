@@ -1,0 +1,31 @@
+
+.bigcontainer{
+  margin-top:5px;
+  padding: 30px;
+  background:#fafbfc;
+  
+}
+#bigcon{
+  color:#ccc;
+  
+}
+
+.property{
+  display:flex;
+
+  background: #E1F9F4; 
+}
+.child1{
+  width:20%;
+}
+.child2{
+  width:80%;
+ 
+  
+}
+input:focus{
+  outline: none;
+}
+select:focus{
+  outline: none;
+}
