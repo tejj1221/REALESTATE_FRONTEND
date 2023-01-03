@@ -1,62 +1,42 @@
-import '../addproperty/form.css';
-
-const LocationInfo = () => {
-  
-
-    return (
-        <>
-            <form className='form-container'>
-                <label className='input-box' htmlFor='email'>Email <br />
-                    <input type='text' id='email' name='email' placeholder='Email' class='input' />
-                </label><br />
-
-                <label className='input-box' htmlFor='city'>City <br />
-                    <select id="city" name="city"  className='selection-input'>
-                        
-                        <option value="Adilabad">Adilabad</option> 
-                        <option value="Agra">Agra</option> 
-                        <option value="Ahmedabad">Ahmedabad</option> 
-                        <option value="Ahmednagar">Ahmednagar</option> 
-                        <option value="Aizawl">Aizawl</option> 
-                        <option value="Ajmer">Ajmer</option> 
-                        <option value="Akola">Akola</option>
-                         <option value="Alappuzha">Alappuzha</option> 
-                         <option value="Aligarh">Aligarh</option>
-                        </select>
-                </label><br />
-
-                <label className='input-box' htmlFor='area'>Area <br />
-                    <select id="area" name="area"  className='selection-input'>
-                        <option value="Adilabad">Adilabad</option>
-                         <option value="Agra">Agra</option>
-                          <option value="Ahmedabad">Ahmedabad</option>
-                           <option value="Ahmednagar">Ahmednagar</option> 
-                           <option value="Aizawl">Aizawl</option>
-                        </select>
-                </label><br />
-
-                <label className='input-box' htmlFor='pincode'>Pincode <br />
-                    <input type='text' id='pincode' name='pincode' placeholder='Example: 220059'  class='input'  />
-                </label><br />
-
-                <label className='input-box' htmlFor='address'>Address <br />
-                    <input type='text' id='address' name='address' placeholder='Address'  className='input' />
-                </label><br />
-
-                <label className='input-box' htmlFor='landmark'>Landmark <br />
-                    <input type='landmark' id='landmark' name='landmark' placeholder='Landmark' className='input'  />
-                </label><br />
-
-                <label className='input-box' htmlFor='latitude'>Latitude <br />
-                    <input type='text' id='latitude' name='latitude' placeholder='Latitude'className='input' />
-                </label><br />
-
-                <label className='input-box' htmlFor='longitude'>Longitude <br />
-                    <input type='text' id='longitude' name='longitude' placeholder='Longitude' className='input'  />
-                </label><br />
-            </form>
-        </>
+const Location=(props)=>{
+    return(
+        <form className="form-addprop">
+        <div>
+        <label >Email</label><br></br>
+        <input type="email" placeholder="Email" value={props.form.email} onChange={(e)=>props.setform({...props.form,email:e.target.value})}/>
+        </div>
+        <div>
+        <label >City</label><br></br>
+        <input type="text" placeholder="Select City " value={props.form.city} onChange={(e)=>props.setform({...props.form,city:e.target.value})}/>
+        </div>
+        <div>
+        <label >Area</label><br></br>
+        <input type="text" placeholder="select Area" value={props.form.area} onChange={(e)=>props.setform({...props.form,area:e.target.value})}/>
+        </div>
+        <div>
+        <label >Pincode</label><br></br>
+        <input type="text" placeholder="Select Pincode " value={props.form.pincode} onChange={(e)=>props.setform({...props.form,pincode:e.target.value})}/>
+        </div>
+        <div>
+        <label >Address</label><br></br>
+        <input type="text" placeholder="Address " value={props.form.address} onChange={(e)=>props.setform({...props.form,address:e.target.value})}/>
+        </div>
+        <div>
+        <label >Landmark</label><br></br>
+        <input type="text" placeholder="Landmark" value={props.form.landMark} onChange={(e)=>props.setform({...props.form,landMark:e.target.value})}/>
+        </div>
+        <div>
+        <label >Latitude</label><br></br>
+        <input type="text" placeholder="Latitude" value={props.form.latitude} onChange={(e)=>props.setform({...props.form,latitude:e.target.value})}/>
+        </div>
+        <div>
+        <label >Longitude</label><br></br>
+        <input type="text" placeholder="Longitude" value={props.form.longitude} onChange={(e)=>props.setform({...props.form,longitude:e.target.value})}/>
+        </div>
+        
+                
+    </form>
     )
-}
 
-export default LocationInfo;
+}
+export default Location;

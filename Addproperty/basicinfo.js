@@ -1,69 +1,76 @@
-import "../addproperty/form.css"
+const Basic=(props)=>{
+    return(
+        <>
+        <form className="form-addprop">
+            <div>
+            <label >Property Type</label><br></br>
+            <select required name="propertyType"  placeholder="Select Property Type" value={props.form.propertyType} onChange={(e)=>props.setform({...props.form,propertyType:e.target.value})}>
+            <option className="gray" value="" disabled selected>Select Property Type</option>
+            <option value="house">House</option>
+            <option value="apartment">Apartment</option>
+            <option value="land">Land</option>
+            <option value="shop">Shop</option>
+            </select></div>
+            <div>
+            <label >Negotiable</label><br></br>
+            <select name="negotiable" placeholder="Select Negotiable " value={props.form.negotiable} onChange={(e)=>props.setform({...props.form,negotable:e.target.value})}>
+            <option value="" disabled selected>Select Negotiable</option>
+            <option value="Yes">YES</option>
+            <option value="No">NO</option>
 
-const BasicInfo = () => {
-   
+            </select>
+            </div>
+            <div>
+            <label >Price</label><br></br>
+            <input type="text" placeholder="Example: 10000 " value={props.form.price} onChange={(e)=>props.setform({...props.form,price:e.target.value})}/>
+            </div>
+            <div>
+            <label >Ownership</label><br></br>
+            <select name="Ownership" placeholder="Select Ownership " value={props.form.ownerShip} onChange={(e)=>props.setform({...props.form,ownerShip:e.target.value})}>
+                <option value="" disabled selected>Select Ownership </option>
+                <option value="Owner">Owner</option>
+                <option value="Dealer">Dealer</option>
+             </select>
+            </div>
+            <div>
+            <label >Property Age</label><br></br>
+            <select name="Property Age" placeholder="Select Property Age " value={props.form.propertyAge} onChange={(e)=>props.setform({...props.form,propertyAge:e.target.value})}>
+            <option value="" disabled selected>Select Property Age </option>
 
-    return (
-        <form className='form-container'>
-            <label className='input-box' htmlFor='propertyType'> Property Type <br />
-                <select id='propertyType' name='propertyType' className='selection-input'>
-                     <option value='Select Property Type'>Select Property Type</option> :
-                        <option ></option>
-                    <option value='Residential'>Residential</option>
-                    <option value='Commercial'>Commercial</option>
-                    <option value='Industrial'>Industrial</option>
-                    <option value='Investing'>Investing</option>
-                </select>
-            </label><br />
+            <option value="lessthan2years">less than 2 Years</option>
+            <option value="lessthan5years">less than 5 Years</option>
+            <option value="lessthan10years">less than 10 Years</option>
+            <option value="morethan10years">More than 10 Years</option>
+            
+           
+            </select>
+            </div>
+            <div>
+            <label >Property Approved</label><br></br>
+            <select name="Property Approved" placeholder="Property Approved" value={props.form.propertyApproved} onChange={(e)=>props.setform({...props.form,propertyApproved:e.target.value})}>
+            <option value="" disabled selected> Property Approved </option>
+            <option value="Yes">YES</option>
+            <option value="No">NO</option>
 
-            <label className='input-box' htmlFor='price'>Price <br />
-                <input type='text' id='price' name='price' placeholder='Example: 100000'
-                    class='input' />
-            </label><br />
+            </select>
+            </div>
+            <div>
+            <label >Property Description</label><br></br>
+            <input type="text" required placeholder="" value={props.form.propertyDescription} onChange={(e)=>props.setform({...props.form,propertyDescription:e.target.value})}/>
+            </div>
+            <div>
+            <label >Bank Loan</label><br></br>
+            <select type="text" placeholder="Bank Loan" value={props.form.bankLoan} onChange={(e)=>props.setform({...props.form,bankLoan:e.target.value})}>
+            <option value="" disabled selected>Bank Loan</option>
+            <option value="available">Available</option>
+            <option value="non-available">Non-Available</option>
 
-            <label className='input-box' htmlFor='propertyAge'>Property Age <br />
-                <select id='propertyAge' name='propertyAge'  className='selection-input'>
-                    <option value='0-5'>0-5</option>
-                    <option value='5-10'>5-10</option>
-                    <option value='10-15'>10-15</option>
-                    <option value='More Than 15 Years'>More Than 15 Years</option>
-                </select>
-            </label><br />
-
-            <label className='input-box' htmlFor='propertyDiscription'>Property Discription <br />
-                <input type='text' id='propertyDiscription' name='propertyDiscription'/>        
-            </label><br />
-
-            <label className='input-box' htmlFor='negotiable'>Negotiable <br />
-                <select id='negotiable' name='negotiable'  className='selection-input'>
-                    <option value='Yes'>Yes</option>
-                    <option value='No'>No</option>
-                </select>
-            </label><br />
-
-            <label className='input-box' htmlFor='ownership'>Ownership <br />
-                <select id='ownership' name='ownership'  className='selection-input'>
-                    <option value='Individual Ownership'>Individual Ownership</option>
-                    <option value='Joint Ownership'>Joint Ownership</option>
-                    <option value='Ownership By Way Of Nomination'>Ownership By Way Of Nomination</option>
-                </select>
-            </label><br />
-
-            <label className='input-box' htmlFor='propertyApproved'>Property Approved <br />
-                <select id='propertyApproved' name='propertyApproved'  className='selection-input'>
-                    <option value='Yes'>Yes</option>
-                    <option value='No'>No</option>
-                </select>
-            </label><br />
-
-            <label className='input-box' htmlFor='bankLoan'>Bank Loan <br />
-                <select id='bankLoan' name='bankLoan'  className='selection-input'>
-                    <option value='Yes'>Yes</option>
-                    <option value='No'>No</option>
-                </select>
-            </label><br />
+            </select>
+            </div>
+            
+                    
         </form>
+        </>
     )
-};
-
-export default BasicInfo;
+}
+export default Basic;
