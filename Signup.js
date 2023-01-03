@@ -1,29 +1,87 @@
+import React from "react";
+import { useNavigate,Link} from "react-router-dom";
+import {useState} from "react";
+
+import "./Signup.css"
+
+const Register=()=>{
+
+  let nav=useNavigate()
+  const [password,setPassowrd]=useState("")
+  const [form,setform]=useState({
+  MailID:"",
+  password:"",
+        })
 
 
-import './Signup.css'
+ const handlesubmit=(e)=>{
+  e.preventDefault()
+  if(form.password===password){
+  console.log(form)
+  
+ 
+  fetch("https://realestate10x.herokuapp.com/users/add",{
+    method:"POST",
+    headers:{
+      "Accept":"application/json",
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify(form)
+  }).then((data)=>data.json())
+  .then((response)=>alert(response.message))
+  nav("/login") 
+  }
+  else{
+    alert("password doesnt match")
+  }
+}
+  
+    return(
+        <>
+        <div className="cover">
+         <div className="register-form">
+            <div className="register-header">
+            <div className="login-logo"><i class="fa-solid fa-city"><span>Estate</span></i></div>
+            <h4>Register</h4>
+          <div className="text">Create New Account</div>
+          </div>
 
+          <form className="register-data" onSubmit={handlesubmit}>
+          
+                                              
+           <input  name="MailID"
+           type={"email"}
+           placeholder="MailID"
+           value={form.MailID}
+           required
+           onChange={(e)=>{setform({...form,MailID:e.target.value})}}
 
-const Signup = () => {
-    
-    return (
-        <div className="signupcontainer">
-            <div className="box">
-                <h1 className="logo">Logo</h1>
-                <p className="para">Create New Account</p>
-                <div id="email">
-                    <input className="signup-input" type="email" required placeholder="Email ID" />
-                </div>
-                <div id="password">
-                    <input className="signup-input" type="password" required placeholder="Password" id="password" />
-                </div>
-                <div id="confirmpassword">
-                    <input className="signup-input" type="password" required placeholder=" Confirm password" id=" confirm password"  />
-                </div>
-                <button className="sign" >Sign Up</button>
-            </div>
-            <p className="foot" >Sign-in</p>
+          />
+          <input name="password"
+             placeholder="Password"
+           
+             required
+             onChange={(e)=>{setform({...form,password:e.target.value})}}
+
+             />
+        <input name="confirmpassword"
+             placeholder="ConfirmPassword"
+             type="password"
+           value={password}
+             required
+             onChange={(e)=>{setPassowrd(e.target.value)}}
+             
+
+             />
+
+          <button type="submit">Sign Up</button>
+          Have an account?<Link to="/login">Login now</Link> 
+  
+      </form>
         </div>
+        </div>
+         
+        </>
     )
 }
-
-export default Signup
+export default Register
