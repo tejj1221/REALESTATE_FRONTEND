@@ -1,33 +1,70 @@
+import React, { useState } from "react"
 
-import React from "react"
+ import { Link, useNavigate } from "react-router-dom";
 import "./Login.css"
+const Login=(props)=>{
+    const {token,settoken,id,setid,name,setname}=props;
+    settoken("")
+    const [input,setInput]=useState("")
+    
 
-const Signin = () => {
+    let nav=useNavigate()
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+        fetch ("https://realestate10x.herokuapp.com/users/login",{
+            method:"POST",
+            headers:{
+              "Accept":"application/json",
+              "Content-Type":"application/json"
+            },
+            body:JSON.stringify(input)
+          }).then((data)=>data.json())
+          .then((response)=>{if(response.status==="Success"){
+            settoken(response.token)
+            setid(response.id)
+            setname(input.userid)
+            nav("/property")
 
-    // 
-    return (
-        <div className="logincontainer">
-            <div className="logbox">
-                <h1 className="logologin">Logo</h1>
-                <p className="paragraph2">Enter your credentials to access your account </p>
-                <div>
-                    <input className="logininput1" placeholder="Email ID" type="text" />
-                </div>
-                <div className="input-wrapper">
-                    <input className="logininput2" placeholder="Password"    />
-                    <button className="btn" >
-                        
-                    </button>
-                </div>
-                <button className="signin" >Sign In</button>
-                <p className="account" >Sign up</p>
+        }else{
+        alert(response.message)}
+          })
+               
+    }
+    return(
+        <>
+        <div className="cover">
+        <div className="login-form">
+            <div>
+                <div className="login-logo"><i class="fa-solid fa-city"><span>Estate</span></i></div>
+        
+                <h4>Login Here</h4>
+                <div className="text">Enter your credentials to access your account</div>
             </div>
-            <div className="signin-setup">
-                <span >Don't have an account?</span>
-                <p className="blue" >Sign up</p>
-            </div>
+            <form className="login-data" onSubmit={handleSubmit} >
+          
+
+                <input className="userdata"  name="userid"
+                  type={"email"}
+                required
+                placeholder="User ID"
+                onChange={(e)=>{setInput({...input,userid:e.target.value})}}
+                />
+
+
+
+           <input  required type="password" placeholder="Password" onChange={(e)=>{setInput({...input,password:e.target.value})}}           />
+
+
+            <button type="sumbit">Sign In</button>
+            Don't have an account?<Link to="/">Sign Up</Link> 
+
+          </form>
+         
         </div>
+        </div>
+
+        </>
     )
 }
-
-export default Signin
+export default Login
+ 
